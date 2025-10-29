@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarthak Trivedi</title>
+    <meta name="description" content="Software Development Engineer specializing in Machine Learning, Distributed Systems, and Full-Stack Development">
+    <meta name="keywords" content="Software Engineer, SDE, Machine Learning, Python, Java, React, AWS, Distributed Systems">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #1a202c;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* SIDEBAR */
+        .sidebar {
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            color: white;
+        }
+        
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden; /* Add this to ensure the image stays within bounds */
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This ensures the image covers the area nicely */
+        }
+        
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .profile-title {
+            font-size: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 35px;
+        }
+        
+        .sidebar-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
+        }
+        
+        .sidebar-section ul {
+            list-style: none;
+        }
+        
+        .sidebar-section ul li {
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        .sidebar-section ul li::before {
+            content: '▸';
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+        }
+        
+        .sidebar-section a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .sidebar-section a:hover {
+            border-bottom-color: white;
+        }
+        
+        /* MAIN CONTENT */
+        .main-content {
+            padding: 50px 45px;
+        }
+        
+        .main-section {
+            margin-bottom: 40px;
+        }
+        
+        .main-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .main-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        /* Skills Grid with Icons */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .skill-category h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .skill-icon {
+            font-size: 20px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            color: #5b21b6;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #a78bfa;
+        }
+        
+        /* Experience & Projects */
+        .experience-item, .project-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .experience-item:hover, .project-item:hover {
+            border-left-color: #667eea;
+            transform: translateX(4px);
+        }
+        
+        .experience-item h3, .project-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 6px;
+        }
+        
+        .experience-meta {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 10px;
+        }
+        
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .experience-item ul li {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .experience-item ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .project-item p {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        
+        .project-tech {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+        
+        /* ATS Keywords Section (hidden visually but readable by ATS) */
+        .ats-keywords {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                padding: 30px 25px;
+            }
+            .main-content {
+                padding: 30px 25px;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ATS Keywords (hidden but scannable) -->
+    <div class="ats-keywords">
+        Software Development Engineer, SDE, Full Stack Developer, Backend Developer, Frontend Developer, 
+        Machine Learning Engineer, Data Structures and Algorithms, Object-Oriented Programming, OOP,
+        Agile Development, Scrum, REST API, RESTful Services, Microservices, Cloud Computing, AWS, 
+        Database Management, SQL, NoSQL, MongoDB, Version Control, Git, GitHub, CI/CD, DevOps,
+        System Design, Distributed Systems, Scalability, Performance Optimization, Code Review,
+        Test-Driven Development, TDD, Unit Testing, Problem Solving, Team Collaboration, Cross-functional Teams,
+        Technical Documentation, Software Architecture, Design Patterns, Computer Science, Bachelor of Technology,
+        B.Tech, VIT Vellore, CGPA 9.5, Python Programming, Java Programming, JavaScript, React.js, Node.js,
+        Express.js, Flask Framework, Machine Learning Algorithms, Deep Learning, Computer Vision, OpenCV,
+        Natural Language Processing, NLP, XGBoost, TensorFlow, PyTorch, Scikit-learn, Data Analysis,
+        Geospatial Analysis, GIS, Geographic Information Systems, API Integration, Web Development,
+        Responsive Design, Frontend Technologies, Backend Technologies, Full Stack Technologies
+    </div>
+
+    <div class="container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-photo">
+                    <img src="pfp.jpg" alt="Sarthak Trivedi">
+                </div>
+                <div class="profile-name">Sarthak Trivedi</div>
+                <div class="profile-title">Software Development Engineer | Full Stack Developer  | AI ML Engineer</div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h2>Contact</h2>
+                <ul>
+                    <li> <a href="mailto:sarthaktrivedi386@gmail.com" title="Send email" target="_blank">sarthaktrivedi386@gmail.com</a></li>
+                    <li onclick="copyToClipboard('my-number')" title="Copy number"><a>+91 8349792213</a></li>
+                    <li><a href="https://github.com/CodeThread386" target="_blank" style="text-decoration: none;" title="Open GitHub">GitHub - CodeThread386</a></li>
+                     <li><a href="https://www.linkedin.com/in/sarthak-trivedi-26a337321/" target="_blank" style="text-decoration: none;" title="Open LinkedIn">LinkedIn</a></li>
+                    <li>Bhopal, Madhya Pradesh, India</li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h2>Education</h2>
+                
+                <ul>
+                    <li>
+                        <div> <b>Vellore Institute of Technology, Vellore</b><br> Bachelor of Technology (B.Tech) in Computer Science and Engineering<br>CGPA: 9.48/10.0<br>Expected Graduation: July 2028<br>Current Year: Second Year</div>
+                        </li>
+                    <li>
+                        <div><b>Billabong High International School, Bhopal</b><br>Grade 12 (ICSE): 94.2%<br>Grade 10 (ICSE): 98.6%<br>State Rank 3 in Grade 10</div></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h2>Languages</h2>
+                <ul>
+                    <li>English (Fluent - B2+ Advanced)</li>
+                    <li>Hindi (Native Proficiency)</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h2>Core Competencies</h2>
+                <p>
+                    <ul>
+
+                        <li> <div>
+                            <strong>Soft Skills:</strong> Team Leadership | Cross-functional Collaboration | Technical Communication | Project Management | Stakeholder Management | Time Management
+                        </div> </li>
+
+                        <li>
+                            <div><strong>Software Engineering:</strong> Data Structures and Algorithms | Object-Oriented Programming | Design Patterns | System Design | Distributed Systems | Microservices Architecture | RESTful APIs | API Design<br></div>
+                            
+                            </li>
+                        <li>
+                            <div><strong>Development Practices:</strong> Agile/Scrum Methodologies | Test-Driven Development | Code Review | Version Control (Git) | Performance Optimization | Memory Management<br></div>
+                            </li>
+                        <li>
+                            
+                            <div><strong>Problem Solving:</strong> Algorithm Design | Complexity Analysis | Debugging | Performance Tuning | Optimization | Scalability | Technical Documentation<br></div></li>
+                        
+                    </ul>       
+                </p>
+            </div>
+        </div>
+        
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="main-section">
+                <h2>Professional Summary</h2>
+                <p style="font-size: 14px; color: #4a5568; line-height: 1.8;">
+                    Results-driven Software Development Engineer with expertise in <strong>Machine Learning</strong>, <strong>Distributed Systems</strong>, and <strong>Full-Stack Development</strong>. Proven track record of building scalable applications using <strong>Python</strong>, <strong>Java</strong>, <strong>React</strong>, and <strong>Node.js</strong>. Strong foundation in <strong>Data Structures and Algorithms</strong>, <strong>Object-Oriented Programming</strong>, and <strong>System Design</strong>. Experienced in <strong>RESTful API development</strong>, <strong>cloud deployment</strong>, and <strong>performance optimization</strong>. Skilled in <strong>collaborative team environments</strong> and <strong>Agile methodologies</strong>.
+                </p>
+            </div>
+            
+            <div class="main-section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Web Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Machine Learning & AI</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">XGBoost</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">YOLOv8</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Databases & Backend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Redis</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Distributed Computing</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Ray Framework</span>
+                            <span class="skill-tag">Parallel Processing</span>
+                            <span class="skill-tag">ThreadPoolExecutor</span>
+                            <span class="skill-tag">Multithreading</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Geospatial & Data Science</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">GeoPandas</span>
+                            <span class="skill-tag">Shapely</span>
+                            <span class="skill-tag">Rasterio</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Pandas</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Tools & Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git/GitHub</span>
+                            <span class="skill-tag">Google colab</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Jupyter</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><span class="skill-icon"></span>Security & Testing</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Cybersecurity</span>
+                            <span class="skill-tag">Unit Testing</span>
+                            <span class="skill-tag">API Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-section">
+                <h2>Professional Experience</h2>
+                <div class="experience-item">
+                    <h3>Web Developer</h3>
+                    <div class="experience-meta">IEEE Student Branch, VIT Vellore | April 2025 - Present</div>
+                    <ul>
+                        <li>Led and developed production-ready web applications.</li>
+                        <li>Implemented responsive UI/UX design patterns and component-based architecture following industry best practices</li>
+                        <li>Conducted code reviews and established coding standards improving code quality</li>
+                        <li>Collaborated with board members to gather requirements and deliver projects</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>System Designer & SWE</h3>
+                    <div class="experience-meta">Psychological Service Provider (Cannot state company according to contract) | Aug 2025 - Present</div>
+                    <ul>
+                        <li>Engineered appointment scheduling system reducing manual workload and clashes</li>
+                        <li>Designed and implemented an app along with a website for appointement booking and patient management with JWT authentication and role-based access control</li>
+                        <li>Implemented patient and staff data analysis along with business stats for manger</li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="main-section">
+                <h2>Projects</h2>
+
+                <div class="project-item">
+                    <h3>AquaSpatial - Geospatial Rainwater Harvesting Analysis Platform</h3>
+                    <p>Engineered end-to-end <strong>machine learning platform</strong> combining <span class="highlight">XGBoost ensemble learning</span> with physics-based hydrological modeling for rainwater harvesting feasibility analysis. Built <strong>Flask REST API backend</strong> with <strong>parallel processing</strong> (ThreadPoolExecutor) integrating real-time data from IMD rainfall APIs and India-WRIS ArcGIS services. Implemented <strong>memory-optimized ML pipeline</strong> using sparse matrices and float32 precision achieving deployment on 512MB cloud instances. Developed geospatial processing modules for drainage density computation, coordinate transformation (WGS84 to Lambert), and watershed analysis using GeoPandas and Shapely. Created synthetic dataset generator (5000+ samples) modeling realistic runoff coefficients and soil infiltration relationships. Designed interactive Leaflet-based frontend with polygon drawing capabilities and multi-language support (i18n).
+                    <br><a href="https://github.com/CodeThread386/Pothole-Preventer.git" class="project-tech" style="text-decoration: none;" target="_blank">Repo Link</a></p>
+                    <div class="project-tech">Python | XGBoost | Flask | GeoPandas | Shapely | Rasterio | Scikit-learn | REST APIs | Leaflet.js | ThreadPoolExecutor | Memory Optimization</div>
+                </div>
+
+                <div class="project-item">
+                    <h3>RapiCure AI</h3>
+                    <p>Building intelligent healthcare platform leveraging <strong>computer vision and NLP</strong> for medical prescription analysis and healthy habbit advisory. Implementing <strong>OCR (Optical Character Recognition)</strong> to extract medication information, dosages, and medical instructions from prescription images. Focused on making AI reliable and accessible for healthcare decision-making while ensuring data privacy and HIPAA compliance considerations.
+                    <br><a href="https://github.com/KTKarthick006/Rapicure.git" class="project-tech" style="text-decoration: none;" target="_blank">Repo Link</a></p>
+                    <div class="project-tech">Python | OpenCV | TensorFlow | OCR | NLP | Flask | Healthcare AI | HIPAA Compliance</div>
+                </div>             
+
+                <div class="project-item">
+                    <h3>Pothole Detection & Intelligent Path Planning System</h3>
+                    <p>Developed real-time road damage detection system using <span class="highlight">YOLOv8 instance segmentation</span> for accurate pothole identification from live camera feeds. Engineered dynamic path planning algorithm analyzing tile-based damage scoring to compute optimal vehicle routing minimizing cumulative road damage. Implemented real-time heatmap visualization overlaying road quality metrics with smoothed path rendering for realistic navigation. Designed for scalability with potential GPS integration and mobile deployment (Android Auto/Apple CarPlay). Utilized OpenCV for video processing and NumPy for efficient numerical computations.
+                    <br><a href="https://github.com/CodeThread386/Pothole-Preventer.git" class="project-tech" style="text-decoration: none;" target="_blank">Repo Link</a> </p>
+                    <div class="project-tech">Python | YOLOv8 (Ultralytics) | OpenCV | NumPy | Matplotlib | Real-time Processing | Computer Vision | Path Optimization Algorithms</div>
+                </div>
+
+                <div class="project-item">
+                    <h3>RGB to Grayscale Image Converter - Distributed Computing Application</h3>
+                    <p>Built high-performance medical image processing application using <span class="highlight">Ray Framework</span> for distributed parallel computing across multiple CPU cores. Achieved <span class="highlight">3.6x speedup</span> (84ms → 23ms on 2000x2000 images) through intelligent workload distribution and task parallelization. Implemented luminosity method (0.299R + 0.587G + 0.114B) following medical imaging standards. Deployed production-ready Flask REST API on Render with Gunicorn WSGI server and modern drag-and-drop frontend interface. Demonstrated expertise in concurrent programming, performance benchmarking, and production deployment.
+                    <br><a href="https://github.com/CodeThread386/RGB2Gray.git" class="project-tech" style="text-decoration: none;" target="_blank">Repo Link</a></p>
+                    <div class="project-tech">Python | Ray Framework 2.9.0 | Flask | NumPy | Pillow | Distributed Computing | REST API | HTML5/CSS3/JavaScript | Performance Optimization</div>
+                </div>              
+                
+                <div class="project-item">
+                    <h3>IEEE Hackathon 2025 - Full Stack Event Management Platform</h3>
+                    <p> <a href="https://ieee-hack-2025.vercel.app/" class="project-tech" style="text-decoration: none;" target="_blank">Visit Website</a> <br> Architected and developed <strong>production-ready event management platform</strong> for IEEE VIT's flagship 24-hour hackathon with 500+ expected participants. Built <span class="highlight">interactive registration system</span> featuring real-time countdown timer, multi-step form validation, and dynamic team member management (2-5 members per team). Designed <strong>retro-arcade themed UI</strong> with animated grid background, glassmorphism effects, and responsive mobile-first design using Tailwind CSS. Implemented <strong>Node.js REST API backend</strong> with MongoDB for scalable data persistence, form submission handling, and email notification system. Created advanced animations including celebration waves, confetti effects, and smooth page transitions for enhanced UX. Developed comprehensive features: track selection (6 categories), problem statement submission (300 char limit with live counter), contact form integration, and sponsor showcase section.
+                    <br><a href="https://github.com/CodeThread386/IEEE-Hack-2025.git" class="project-tech" style="text-decoration: none;" target="_blank">Repo Link</a> </p>
+                    <div class="project-tech">HTML5 | CSS3 | Tailwind CSS | Vanilla JavaScript | Node.js | Express.js | MongoDB | REST APIs | Responsive Design | Animation Design | Form Validation</div>
+                </div>
+                
+                <div class="project-item">
+                    <h3>IEEE BINGE - OTT Streaming Platform</h3>
+                    <p><a href="https://codethread386.github.io/OTT/" class="project-tech" style="text-decoration: none;" target="_blank">Visit Website</a> <br>Created responsive single-page web application with <strong>dynamic watchlist functionality</strong> and modal-based detail views. Built immersive UI with smooth CSS transitions, hover effects, and mobile-responsive layout using modern JavaScript. Implemented local storage for state persistence and DOM manipulation for interactive features. Selected as official IEEE chapter project demonstrating clean code architecture and modern web development practices.
+                    <br><a href="https://github.com/CodeThread386/OTT.git" class="project-tech" style="text-decoration: none;" target="_blank">Repo Link</a> </p>
+                    <div class="project-tech">HTML5 | CSS3 | Vanilla JavaScript | Responsive Design | DOM Manipulation | Local Storage | UI/UX Design</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
